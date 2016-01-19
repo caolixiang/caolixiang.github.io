@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <title>RxJS API解析（二） | MigicQ</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+    <meta name="description" content="RxJS-api-case，关注angular2、ReactiveExtension等最新内容。Angular2,angular,Angular">
+    
+    
+    
+      <meta name="keywords" content="Reactive,RxJS,javascript,慕慕珍珍,曹莅祥,caolixiang,caolixiang33,rxjs教程,rxjs入门教程,rxjs入门,angular2教程,angular2入门教程,angular2入门">
+    
+  
+    <link rel="alternative" href="/atom.xml" title="MigicQ" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="http://7xq0ve.com1.z0.glb.clouddn.com/favicon.ico">
+  
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+</head>
+
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="http://7xq0ve.com1.z0.glb.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202016-01-14%20%E4%B8%8B%E5%8D%8811.46.55.png" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">慕慕珍珍</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">The winter is coming.</p>
+		
+
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>菜单</li>
+						<li>标签</li>
+						
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives">所有文章</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="weibo" target="_blank" href="http://weibo.com/caolixiang" title="weibo">weibo</a>
+					        
+								<a class="rss" target="_blank" href="/atom.xml" title="rss">rss</a>
+					        
+								<a class="mail" target="_blank" href="mailTo:caolixiang@gmail.com" title="mail">mail</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/Angular2/" style="font-size: 10px;">Angular2</a> <a href="/tags/Angularjs2/" style="font-size: 10px;">Angularjs2</a> <a href="/tags/Reactive/" style="font-size: 15px;">Reactive</a> <a href="/tags/RxJS/" style="font-size: 15px;">RxJS</a> <a href="/tags/javascript/" style="font-size: 20px;">javascript</a>
+					</div>
+				</section>
+				
+				
+				
+
+				
+			</div>
+		</div>
+	</header>				
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">慕慕珍珍</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+			
+				<img lazy-src="http://7xq0ve.com1.z0.glb.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202016-01-14%20%E4%B8%8B%E5%8D%8811.46.55.png" class="js-avatar">
+			
+			</div>
+			<hgroup>
+			  <h1 class="header-author">慕慕珍珍</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">The winter is coming.</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">所有文章</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="weibo" target="_blank" href="http://weibo.com/caolixiang" title="weibo">weibo</a>
+			        
+						<a class="rss" target="_blank" href="/atom.xml" title="rss">rss</a>
+			        
+						<a class="mail" target="_blank" href="mailTo:caolixiang@gmail.com" title="mail">mail</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div class="body-wrap"><article id="post-rx-api-case" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/01/14/rx-api-case/" class="article-date">
+  	<time datetime="2016-01-14T14:45:36.000Z" itemprop="datePublished">2016-01-14</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      RxJS API解析（二）
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Reactive/">Reactive</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/RxJS/">RxJS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li></ul>
+	</div>
+
+        
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="Rx*__28Observable-case_29_u65B9_u6CD5"><a href="#Rx*__28Observable-case_29_u65B9_u6CD5" class="headerlink" title="Rx* (Observable.case)方法"></a>Rx* (Observable.case)方法</h3><h4 id="u65B9_u6CD5_u5B9A_u4E49"><a href="#u65B9_u6CD5_u5B9A_u4E49" class="headerlink" title="方法定义"></a>方法定义</h4><p>[<code>Rx.Observable.case(selector, sources, [elseSource|scheduler])</code>]</p>
+<h4 id="u4F5C_u7528"><a href="#u4F5C_u7528" class="headerlink" title="作用"></a>作用</h4><p>选择序列中特定可观察对象进行订阅，在特定可观察对象不存在的情况下，返回传入的默认可观察对象。</p>
+<h4 id="u53C2_u6570"><a href="#u53C2_u6570" class="headerlink" title="参数"></a>参数</h4><ol>
+<li><code>selector</code> <em>(<code>Function</code>)</em>: 返回<strong>键</strong>的字符串的函数，<strong>键</strong>用以与<code>sources</code>中的键名进行比较。</li>
+<li><code>sources</code> <em>(<code>Object</code>)</em>: 一个包含可观察对象的Javascript对象。</li>
+<li><code>[elseSource|scheduler]</code> <em>(<code>Observable</code> | <code>Scheduler</code>)</em>:当<code>selector</code>无法匹配<code>sources</code>时，该对象被默认返回。 如果没有明确指定，将返回附加了指定<code>scheduler</code>的<code>Rx.Observabe.empty</code> 对象。</li>
+</ol>
+<h4 id="u8FD4_u56DE_u503C"><a href="#u8FD4_u56DE_u503C" class="headerlink" title="返回值"></a>返回值</h4><p><em>(<code>Observable</code>)</em>: 返回值为经过选择后的<code>Observable</code>（可观察对象）。</p>
+<h4 id="u5B9D_u73E0_u56FE"><a href="#u5B9D_u73E0_u56FE" class="headerlink" title="宝珠图"></a>宝珠图</h4><p><img src="http://7xq0ve.com1.z0.glb.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202016-01-15%20%E4%B8%8A%E5%8D%8811.45.33.png" alt="Observable.case"></p>
+<h3 id="u5B9E_u4F8B"><a href="#u5B9E_u4F8B" class="headerlink" title="实例"></a>实例</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> sources = &#123;</span><br><span class="line">  hello: Rx.Observable.just(<span class="string">'clx'</span>),</span><br><span class="line">  world: Rx.Observable.just(<span class="string">'wxq'</span>)</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">var</span> subscription = Rx.Observable.case(()=&gt;<span class="string">"hello"</span>, sources, Rx.Observable.empty())</span><br><span class="line"></span><br><span class="line">subscription.subscribe(<span class="function"><span class="keyword">function</span>(<span class="params">x</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(x)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>实例中，匿名函数<code>()=&gt;&quot;hello&quot;</code>指定需要在sources中返回的可观察对象的键名为<code>&quot;hello&quot;</code>，命令行最终输出<code>&quot;clx&quot;</code>，点击进入<a href="https://jsbin.com/kodije/edit?js,console,output" target="_blank" rel="external"><code>case()</code>实例</a>。</p>
+<h3 id="u9898_u5916_u8BDD"><a href="#u9898_u5916_u8BDD" class="headerlink" title="题外话"></a>题外话</h3><p>键值对，可以对值进行命名。通过键值对可以构造命名的<code>observable</code>可观察对象。</p>
+<p>键值对是<strong>Javascript</strong>对象的组成部分，键名可以方便进行查找和比较操作。</p>
+<p>两个典型的使用场景中，数据都是用键值对表示的：通过<code>Ajax</code>请求获得的数据，就是一个键值对（<code>JSON&#39;</code>对象）；许多配置文件也是键值对写入并持久化的，比如数据库、缓存的配置。</p>
+<p>典型的<code>Ajax</code>请求结果<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">	message: <span class="string">"ok"</span>,</span><br><span class="line">	nu: <span class="string">"350430378480"</span>,</span><br><span class="line">	companytype: <span class="string">"huitongkuaidi"</span>,</span><br><span class="line">	ischeck: <span class="string">"1"</span>,</span><br><span class="line">	com: <span class="string">"huitongkuaidi"</span>,</span><br><span class="line">	updatetime: <span class="string">"2016-01-15 10:58:19"</span>,</span><br><span class="line">	status: <span class="string">"200"</span>,</span><br><span class="line">	condition: <span class="string">"F00"</span>,</span><br><span class="line">	codenumber: <span class="string">"350430378480"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p><em>Laravel</em> 的数据库配置<br><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">'mysql'</span> =&gt; [</span><br><span class="line">    <span class="string">'read'</span> =&gt; [</span><br><span class="line">        <span class="string">'host'</span> =&gt; <span class="string">'127.0.0.1'</span>,</span><br><span class="line">    ],</span><br><span class="line">    <span class="string">'write'</span> =&gt; [</span><br><span class="line">        <span class="string">'host'</span> =&gt; <span class="string">'127.0.0.1'</span></span><br><span class="line">    ],</span><br><span class="line">    <span class="string">'driver'</span>    =&gt; <span class="string">'mysql'</span>,</span><br><span class="line">    <span class="string">'database'</span>  =&gt; <span class="string">'homestead'</span>,</span><br><span class="line">    <span class="string">'username'</span>  =&gt; env(<span class="string">'DB_USERNAME'</span>, <span class="string">'root'</span>),</span><br><span class="line">    <span class="string">'password'</span>  =&gt; env(<span class="string">'DB_PASSWORD'</span>, <span class="string">''</span>),</span><br><span class="line">    <span class="string">'charset'</span>   =&gt; <span class="string">'utf8'</span>,</span><br><span class="line">    <span class="string">'collation'</span> =&gt; <span class="string">'utf8_general_ci'</span>,</span><br><span class="line">    <span class="string">'prefix'</span>    =&gt; <span class="string">''</span>,</span><br><span class="line">    <span class="string">'strict'</span>    =&gt; <span class="keyword">false</span>,</span><br><span class="line">]</span><br></pre></td></tr></table></figure></p>
+<p>试想，我们从不同的其他服务器获取配置文件，那么整个获取配置的过程是异步的。</p>
+<p>我们将获取的结果封装成可观察对象，再命名为如<code>database</code>这样名称的键值对，使用<code>case()</code>方法便可以在可观察对象发射时，执行相应的初始化操作。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> config = &#123;</span><br><span class="line">	<span class="string">"database"</span>: Observable.return(<span class="string">"数据库配置"</span>),</span><br><span class="line">	<span class="string">"cache"</span>: Observable.return(<span class="string">"缓存配置"</span>),</span><br><span class="line">	<span class="string">"picCDN"</span>: Observable.return(<span class="string">"图片CDN配置，比如七牛"</span>)</span><br><span class="line">&#125;;</span><br><span class="line">Observable.case(()=&gt;<span class="string">'database'</span>, config, Observable.empty())</span><br><span class="line">	.subscribe((databaseConfig) =&gt; &#123;</span><br><span class="line">		<span class="comment">// 连接数据库</span></span><br><span class="line">	&#125;)</span><br><span class="line">Observable.case(()=&gt;<span class="string">'picCDN'</span>, config, Observable.empty())</span><br><span class="line">	.subscribe((pciCDNConfig) =&gt; &#123;</span><br><span class="line">		<span class="comment">// 初始化图片CDN</span></span><br><span class="line">	&#125;)</span><br></pre></td></tr></table></figure>
+<p>把上面的例子分开写也没有什么问题：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Observable.return(<span class="string">"数据库配置"</span>)</span><br><span class="line">	.subscribe(<span class="function"><span class="keyword">function</span>(<span class="params">databaseConfig</span>) </span>&#123;</span><br><span class="line">		<span class="comment">// 链接数据库</span></span><br><span class="line">	&#125;)</span><br><span class="line"></span><br><span class="line">Observable.return(<span class="string">"图片CDN配置，比如七牛"</span>)</span><br><span class="line">	.subscribe(<span class="function"><span class="keyword">function</span>(<span class="params">picCDNConfig</span>) </span>&#123;</span><br><span class="line">		<span class="comment">// 初始化图片CDN</span></span><br><span class="line">	&#125;)</span><br></pre></td></tr></table></figure>
+<p>我们为何要多此一举去使用<code>case()</code>呢？从<strong>结构化</strong>去考虑，将所有从远程获取配置的过程封装成<code>config</code>对象更有实际意义，也更便于代码的维护和管理。</p>
+<p>我们再看一个例子作为结束：例子是针对表单进行校验，校验用户的<code>手机号</code>和<code>邮箱</code>是否和服务器记录重复，将所有校验封装在<code>validate</code>对象中结构更为合理：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> validate = &#123;</span><br><span class="line">	<span class="string">"mobile"</span>: Observable.return(<span class="string">'123-566-789-01'</span>),</span><br><span class="line">	<span class="string">"email"</span>: Observable.return(<span class="string">'JonSnow@company.com'</span>)</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">var</span> emptyObserable = Observable.empty();</span><br><span class="line">validate.case(()=&gt;<span class="string">'mobile'</span>, validate, empty)</span><br><span class="line">	.subscribe(<span class="function"><span class="keyword">function</span>(<span class="params">mobile</span>)</span>&#123;</span><br><span class="line">		<span class="comment">// 验证手机号码是否重复</span></span><br><span class="line">	&#125;)</span><br><span class="line">validate.case(()=&gt;<span class="string">'email'</span>, validate, empty)</span><br><span class="line">	.subscribe(<span class="function"><span class="keyword">function</span>(<span class="params">email</span>)</span>&#123;</span><br><span class="line">		<span class="comment">// 验证用户邮箱是否重复</span></span><br><span class="line">	&#125;)</span><br></pre></td></tr></table></figure>
+<p><em>剧终</em></p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/01/17/rx-api-catch/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          RxJS API解析（三）
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/01/13/rx-api-amb/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">RxJS API解析（一）</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+
+
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2016 慕慕珍珍
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js" type="text/javascript"></script>
+<script src="/js/main.js" type="text/javascript"></script>
+
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  </div>
+</body>
+</html>

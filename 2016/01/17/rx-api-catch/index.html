@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <title>RxJS API解析（三） | MigicQ</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+    <meta name="description" content="RxJS-api-catch，关注angular2、ReactiveExtension等最新内容。Angular2,angular,Angular">
+    
+    
+    
+      <meta name="keywords" content="Reactive,RxJS,javascript,慕慕珍珍,曹莅祥,caolixiang,caolixiang33,rxjs教程,rxjs入门教程,rxjs入门,angular2教程,angular2入门教程,angular2入门">
+    
+  
+    <link rel="alternative" href="/atom.xml" title="MigicQ" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="http://7xq0ve.com1.z0.glb.clouddn.com/favicon.ico">
+  
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+</head>
+
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="http://7xq0ve.com1.z0.glb.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202016-01-14%20%E4%B8%8B%E5%8D%8811.46.55.png" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">慕慕珍珍</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">The winter is coming.</p>
+		
+
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>菜单</li>
+						<li>标签</li>
+						
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives">所有文章</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="weibo" target="_blank" href="http://weibo.com/caolixiang" title="weibo">weibo</a>
+					        
+								<a class="rss" target="_blank" href="/atom.xml" title="rss">rss</a>
+					        
+								<a class="mail" target="_blank" href="mailTo:caolixiang@gmail.com" title="mail">mail</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/Angular2/" style="font-size: 10px;">Angular2</a> <a href="/tags/Angularjs2/" style="font-size: 10px;">Angularjs2</a> <a href="/tags/Reactive/" style="font-size: 15px;">Reactive</a> <a href="/tags/RxJS/" style="font-size: 15px;">RxJS</a> <a href="/tags/javascript/" style="font-size: 20px;">javascript</a>
+					</div>
+				</section>
+				
+				
+				
+
+				
+			</div>
+		</div>
+	</header>				
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">慕慕珍珍</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+			
+				<img lazy-src="http://7xq0ve.com1.z0.glb.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202016-01-14%20%E4%B8%8B%E5%8D%8811.46.55.png" class="js-avatar">
+			
+			</div>
+			<hgroup>
+			  <h1 class="header-author">慕慕珍珍</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">The winter is coming.</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">所有文章</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="weibo" target="_blank" href="http://weibo.com/caolixiang" title="weibo">weibo</a>
+			        
+						<a class="rss" target="_blank" href="/atom.xml" title="rss">rss</a>
+			        
+						<a class="mail" target="_blank" href="mailTo:caolixiang@gmail.com" title="mail">mail</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div class="body-wrap"><article id="post-rx-api-catch" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/01/17/rx-api-catch/" class="article-date">
+  	<time datetime="2016-01-17T06:03:07.000Z" itemprop="datePublished">2016-01-17</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      RxJS API解析（三）
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Reactive/">Reactive</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/RxJS/">RxJS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li></ul>
+	</div>
+
+        
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="Rx*__28Observable-catch_29_u65B9_u6CD5"><a href="#Rx*__28Observable-catch_29_u65B9_u6CD5" class="headerlink" title="Rx* (Observable.catch)方法"></a>Rx* (Observable.catch)方法</h3><h4 id="u65B9_u6CD5_u5B9A_u4E49"><a href="#u65B9_u6CD5_u5B9A_u4E49" class="headerlink" title="方法定义"></a>方法定义</h4><p> <code>Rx.Observable.catch(...args)</code></p>
+<h4 id="u4F5C_u7528"><a href="#u4F5C_u7528" class="headerlink" title="作用"></a>作用</h4><p>序列中可观察对象因为异常而被终止后，<strong>继续</strong>订阅序列中的其他可观察对象。</p>
+<h4 id="u53C2_u6570"><a href="#u53C2_u6570" class="headerlink" title="参数"></a>参数</h4><p><code>args</code> <em>(<code>Array</code> | <code>arguments</code>)</em>: 可观察对象序列。</p>
+<h4 id="u8FD4_u56DE_u503C"><a href="#u8FD4_u56DE_u503C" class="headerlink" title="返回值"></a>返回值</h4><p><em>(<code>Observable</code>)</em>: 可观察对象序列中能够正确终止，不抛出异常的第一个可观察对象。</p>
+<h4 id="u5B9D_u73E0_u56FE"><a href="#u5B9D_u73E0_u56FE" class="headerlink" title="宝珠图"></a>宝珠图</h4><p><img src="http://reactivex.io/documentation/operators/images/Catch.png" alt="catch"></p>
+<h3 id="u5B9E_u4F8B"><a href="#u5B9E_u4F8B" class="headerlink" title="实例"></a>实例</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obs1 = Rx.Observable.throw(<span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">'error'</span>));</span><br><span class="line"><span class="keyword">var</span> obs2 = Rx.Observable.return(<span class="number">42</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> source = Rx.Observable.catch(obs1, obs2);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> subscription = source.subscribe(</span><br><span class="line">  x =&gt; <span class="built_in">console</span>.log(<span class="string">`onNext: <span class="subst">$&#123;x&#125;</span>`</span>),</span><br><span class="line">  e =&gt; <span class="built_in">console</span>.log(<span class="string">`onError: <span class="subst">$&#123;e&#125;</span>`</span>),</span><br><span class="line">  () =&gt; <span class="built_in">console</span>.log(<span class="string">'onCompleted'</span>));</span><br><span class="line"></span><br><span class="line"><span class="comment">// onNext: 42</span></span><br></pre></td></tr></table></figure>
+<p>在订阅时， <code>obs1</code>抛出错误后，程序继续执行，转而输出没有异常的<code>obs2</code>，并输出<code>obs2</code>发射的值<code>42</code>。点击进入<a href="http://jsbin.com/vehili/1/edit?js,console,output" target="_blank" rel="external">在线演示</a>。</p>
+<h3 id="u9898_u5916_u8BDD"><a href="#u9898_u5916_u8BDD" class="headerlink" title="题外话"></a>题外话</h3><p><strong>服务可用性</strong>是指，服务提供者需要保证服务在任何时间、情况下正确地提供。比如联网的银行系统，用户在各个ATM终端进行提取现金等操作后，数据都会被及时同步和备份。当不可抗因素发生时，数据可以被尽快的通过备份恢复。通常这些解决方案被称为<strong>灾备处理</strong>。</p>
+<p>使用云服务，例如<strong>Ucloud</strong>的<code>Redis</code>服务，可以在同一个服务上看到两个不同地址访问地址，文档描述如下：</p>
+<blockquote>
+<p>每个云内存存储实例都会提供两个IP进行访问。</p>
+<p>这两个IP都可以对云内存存储实例进行访问，分布在不同的接入服务上，其作用在于，当其中一个IP无法正常访问时，仍有另一个IP可用，不会完全中止服务。</p>
+<p>因此，应用程序可以增加一个容灾切换的逻辑处理：将访问的IP列表设置好，默认访问其中的一个IP，当该IP无法访问时，自动切换到另一个IP继续业务。</p>
+</blockquote>
+<p>文档中提到了增强<strong>服务可用性</strong>的线索：<strong>总是提供一组相同的服务而不是一个服务</strong>，或者至少是相似的服务，服务调用后可以完成<strong>相同</strong>的业务逻辑。<br>这个策略也是<strong>负载均衡</strong>的基础，可以缓解单个服务提供者的压力，从用户角度看，又感知不到服务的差异性：比如 <em>多个HTTP服务</em> 、<em>读写分离的数据库</em>。</p>
+<p>文末，举一个实例：假设你需要做一个APP，APP中用户在通过手机验证码验证后，才能登录账户。</p>
+<p><img src="http://image.woshipm.com/wp-files/2015/04/2.png" alt="verifyMobile"></p>
+<p>许多第三方服务提供商，都提供手机验证服务，比如<em>LeanCloud</em>，调用者像服务提供方发送<code>POST</code>请求，请求的<code>body</code>为用户手机号码。然后服务提供者，会将<strong>验证码</strong>发送到用户手机。用户在收到<strong>验证码</strong>后，通过表单，输入<strong>验证码</strong>，提交后，调用者再次向服务提供商发起<code>POST</code>请求，请求的<code>body</code>为用户输入的验证码然后等待服务提供商响应。</p>
+<p>当然，某些情况下，服务提供商可能自己挂了，或者是不支持向某个号码所属的运营商提供服务；还有些情况下，用户的号码可能在某个服务提供商的黑名单中。比如：你的一个用户是 <em>经常写竞品分析的<strong>产品经理</strong></em> ，可能也许大概你的号码就在某个服务提供商的黑名单中。</p>
+<p>我们往往要同时接入多个服务提供商的短信验证服务，保证用户能够正常通过我们的注册（登录）流程：</p>
+<p>回到<code>catch()</code>函数，结合定义我们可以把一个提供商作为<strong>主要服务提供者</strong>，如果其不能提供服务（调用失败），我们可以选择第二家作为候选：</p>
+<figure class="highlight coffeescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">var service1 = Observable.create(<span class="string">"服务提供商#1"</span>);</span><br><span class="line">var service2 = Observable.create(<span class="string">"服务提供商#1"</span>);</span><br><span class="line"></span><br><span class="line">Observable.<span class="keyword">catch</span>(service1, service2).subscribe(&#123;</span><br><span class="line">	()=&gt;<span class="built_in">console</span>.log(<span class="string">'succeed'</span>),</span><br><span class="line">	<span class="function"><span class="params">()</span>=&gt;</span><span class="built_in">console</span>.log(<span class="string">'所有验证服务均不可用'</span>)</span><br><span class="line">	()=&gt;<span class="built_in">console</span>.log(<span class="string">'completed'</span>)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>这样，用户能够收到验证码并成功验证的几率大大增加。</p>
+<p><em>剧终</em></p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/01/19/angular2-core-concept/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          Angular2核心概念
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/01/14/rx-api-case/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">RxJS API解析（二）</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+
+
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2016 慕慕珍珍
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js" type="text/javascript"></script>
+<script src="/js/main.js" type="text/javascript"></script>
+
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  </div>
+</body>
+</html>
