@@ -4,7 +4,7 @@
   <subtitle><![CDATA[The winter is coming.]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="caolixiang.github.io/"/>
-  <updated>2016-01-19T01:24:54.000Z</updated>
+  <updated>2016-01-22T06:39:47.000Z</updated>
   <id>caolixiang.github.io/</id>
   
   <author>
@@ -13,6 +13,52 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title><![CDATA[RxJS API解析（四）]]></title>
+    <link href="caolixiang.github.io/2016/01/22/rx-api-combine-latest/"/>
+    <id>caolixiang.github.io/2016/01/22/rx-api-combine-latest/</id>
+    <published>2016-01-22T06:38:47.000Z</published>
+    <updated>2016-01-22T06:39:47.000Z</updated>
+    <content type="html"><![CDATA[<h3 id="Rx*_28Observable-combineLatest_29_u65B9_u6CD5"><a href="#Rx*_28Observable-combineLatest_29_u65B9_u6CD5" class="headerlink" title="Rx*(Observable.combineLatest)方法"></a>Rx*(Observable.combineLatest)方法</h3><h4 id="u65B9_u6CD5_u5B9A_u4E49"><a href="#u65B9_u6CD5_u5B9A_u4E49" class="headerlink" title="方法定义"></a>方法定义</h4><p><code>Rx.Observable.combineLatest(...args, [resultSelector])</code></p>
+<h4 id="u4F5C_u7528"><a href="#u4F5C_u7528" class="headerlink" title="作用"></a>作用</h4><p>通过<strong>处理函数</strong>总是将指定的<strong>可观察对象序列</strong>中<strong>最新</strong>发射的值合并为一个<strong>可观察对象</strong>。</p>
+<h4 id="u53C2_u6570"><a href="#u53C2_u6570" class="headerlink" title="参数"></a>参数</h4><ol>
+<li><code>args</code> <em>(arguments | Array)</em>: 一系列可观察对象或可观察对象的数组。</li>
+<li><code>[resultSelector]</code> <em>(<code>Function</code>)</em>: 在所有可观察对象都发射值后调用的<strong>处理函数</strong>。</li>
+</ol>
+<h4 id="u8FD4_u56DE_u503C"><a href="#u8FD4_u56DE_u503C" class="headerlink" title="返回值"></a>返回值</h4><p><em>(<code>Observable</code>)</em>: 由传入的可观察序列经过<strong>处理函数</strong>合并后的结果组成的可观察序列。</p>
+<h4 id="u5B9D_u73E0_u56FE"><a href="#u5B9D_u73E0_u56FE" class="headerlink" title="宝珠图"></a>宝珠图</h4><p><img src="http://reactivex.io/documentation/operators/images/combineLatest.png" alt="combineLatest"></p>
+<p><code>Observable.combineLastest()</code>函数，总是合并序列中<strong>最新</strong>发射的值。宝珠图中的颜色球发射<strong>颜色</strong>，空白的图形发射<strong>待染色图形</strong>，处理函数对<strong>待染色对象</strong>进行染色：总是用户最新发射的<strong>颜色</strong>或者对最新发射的<strong>待染色对象</strong>。</p>
+<p>假设<strong>颜色</strong>序列仅发射了第一个宝珠<strong>浅紫色</strong>且后续不再发射，那么结果街将会是一个由<strong>浅紫色</strong>组成的<strong>染色后对象</strong>的序列。</p>
+<p>使用<a href="http://reactivex.io/documentation/operators/combinelatest.html" target="_blank" rel="external">官方可拖动宝珠图</a>，可以帮助理解，拖动序列中的宝珠，观察输出序列的变化。</p>
+<h3 id="u5B9E_u4F8B"><a href="#u5B9E_u4F8B" class="headerlink" title="实例"></a>实例</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> colors = [<span class="string">"紫色"</span>,<span class="string">"黄色"</span>,<span class="string">"蓝色"</span>,<span class="string">"黑色"</span>];</span><br><span class="line"><span class="keyword">var</span> shapes = [<span class="string">"小星星"</span>,<span class="string">"圆形"</span>,<span class="string">"三角形"</span>,<span class="string">"正方形"</span>,<span class="string">"心形"</span>,<span class="string">"五边形"</span>];</span><br><span class="line"><span class="keyword">var</span> source1 = Rx.Observable.interval(<span class="number">3000</span>)</span><br><span class="line">  .map(()=&gt;colors.pop());</span><br><span class="line"><span class="keyword">var</span> source2 = Rx.Observable.interval(<span class="number">2000</span>)</span><br><span class="line">  .map(()=&gt;shapes.pop());</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> combined = Rx.Observable.combineLatest(source1, source2, <span class="function"><span class="keyword">function</span>(<span class="params">x, y</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">return</span> x + <span class="string">"的"</span> + y;</span><br><span class="line">&#125;).take(<span class="number">8</span>);</span><br><span class="line"></span><br><span class="line">combined.subscribe((shaped)=&gt;<span class="built_in">console</span>.log(shaped));</span><br></pre></td></tr></table></figure>
+<p>实例模拟第一个<strong>宝珠图</strong>，<a href="http://jsbin.com/joyuze/edit?js,console" target="_blank" rel="external">点击进入可运行实例</a>。其中列1发射颜色值，序列2发射形状。结果输出染色后的形状：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"黑色的五边形"</span></span><br><span class="line"><span class="string">"黑色的心形"</span></span><br><span class="line"><span class="string">"蓝色的心形"</span></span><br><span class="line"><span class="string">"蓝色的正方形"</span></span><br><span class="line"><span class="string">"蓝色的三角形"</span></span><br><span class="line"><span class="string">"黄色的三角形"</span></span><br><span class="line"><span class="string">"黄色的圆形"</span></span><br><span class="line"><span class="string">"紫色的圆形"</span></span><br></pre></td></tr></table></figure></p>
+<p>还有一个<strong>非常好的</strong>实例在<a href="http://segmentfault.com/a/1190000004293922" target="_blank" rel="external">前面的文章</a>中，是<code>combineLatest()</code>在缓存数据方面的应用，如果你想深入理解<code>combineLatest()</code>不妨看一下。</p>
+<h3 id="u9898_u5916_u8BDD"><a href="#u9898_u5916_u8BDD" class="headerlink" title="题外话"></a>题外话</h3><p>写这个专题的时候，对<code>Rx</code>的抽象能力赞叹不已。</p>
+<p>大家通常把编写一个框架的工作称作“造轮子”。<br>“轮子”是一个针对某一类问题的解决方案，通常是由于反复解决某一个工程问题而产生的。某种程度上，轮子可以一劳永逸，同时轮子的使用可以大大地提高生产的效率(试想想你在使用如<code>Rails</code>这类有    <strong>ORM</strong>特性框架时的感受)。</p>
+<p><code>Rx</code>似乎从另一个方面而不是实际问题进行抽象——<strong>数学</strong>，是一个函数式编程模式。从数学而不是工程作为起点，创造的工具的威力<em>可能</em>更强大，但是学习成本(使用成本)<em>可能</em>会更高。</p>
+<p>任何<strong>程序设计语言</strong>在讲解<strong>递归</strong>特性时，基本都会举<code>汉诺塔</code>、<code>斐波拉契数列</code>的例子。没错，请你对比一下<code>斐波拉契数列</code>和<code>combineLatest()</code>定义的相似之处：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">fibo</span><span class="params">(i)</span>:</span>  </span><br><span class="line">   <span class="keyword">if</span> i==<span class="number">0</span> <span class="keyword">or</span> i==<span class="number">1</span>:  </span><br><span class="line">       <span class="keyword">return</span> <span class="number">1</span>  </span><br><span class="line">   <span class="keyword">else</span>:  </span><br><span class="line">       <span class="keyword">return</span> fibo(i-<span class="number">1</span>)+fibo(i-<span class="number">2</span>)</span><br></pre></td></tr></table></figure>
+<p>Oops！递归完成后产生值的过程就是<code>combineLatest()</code>的过程。</p>
+<p>在学习<code>Rx</code>的操作符时，请反复地理解操作符的作用、限制。最好的理解方法是构建一个场景。</p>
+<p>在<code>combineLatest()</code>中，我们不妨将场景限定为拥有<code>两个可观察对象的可观察序列</code>，并且<code>对象A</code>总是较低频率地发射新值，而<code>对象B</code>比较频繁地发射：</p>
+<figure class="highlight brainfuck"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">A</span> <span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="comment">*</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="comment">*</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span>&gt;</span><br><span class="line"><span class="comment">B</span> <span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="comment">@</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="comment">@</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="comment">@</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="comment">@</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="comment">@</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="comment">@</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span>&gt;</span><br></pre></td></tr></table></figure>
+<p>那么<code>对象A</code>在实际中可能是什么？缓存后的<code>http</code>请求后的数据、异步获取的配置文件…<br><code>对象B</code>自然可以是，与服务器的实时同步、用户上传图片的实时上传、用户在列表中执行的翻页操作…</p>
+<p><a href="http://segmentfault.com/a/1190000004293922" target="_blank" rel="external">前面的文章</a>中缓存Github用户的就是上面提到的场景。</p>
+<p><em>剧终</em></p>
+]]></content>
+    <summary type="html">
+    <![CDATA[RxJS-api-combineLatest]]>
+    
+    </summary>
+    
+      <category term="Reactive" scheme="caolixiang.github.io/tags/Reactive/"/>
+    
+      <category term="RxJS" scheme="caolixiang.github.io/tags/RxJS/"/>
+    
+      <category term="javascript" scheme="caolixiang.github.io/tags/javascript/"/>
+    
+  </entry>
   
   <entry>
     <title><![CDATA[Angular2核心概念]]></title>
